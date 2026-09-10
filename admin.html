@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Poovarasan VJ Portfolio</title>
+  <meta name="robots" content="noindex,nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     LOGIN SCREEN
+════════════════════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <i class="fas fa-shield-halved shield-icon"></i>
+      <h1>ADMIN ACCESS</h1>
+      <p>Poovarasan VJ — Portfolio Manager</p>
+    </div>
+
+    <div id="login-error" class="login-error">
+      <i class="fas fa-circle-exclamation"></i> Invalid credentials. Access denied.
+    </div>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-email"><i class="fas fa-envelope"></i> Admin Email</label>
+        <input type="email" id="login-email" placeholder="Enter your Email" required autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label for="login-password"><i class="fas fa-key"></i> Password</label>
+        <input type="password" id="login-password" placeholder="Enter your password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-login" id="login-submit-btn">
+        <i class="fas fa-sign-in-alt"></i>&nbsp; Login to Dashboard
+      </button>
+    </form>
+
+    <div style="margin-top:1.2rem;text-align:center">
+      <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> View Live Portfolio
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     ADMIN PANEL (Shown after login)
+════════════════════════════════════════════════════ -->
+<div id="admin-panel">
+
+  <!-- ── SIDEBAR (Desktop) ────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">PVJ Admin</div>
+      <div class="sidebar-subtitle">Portfolio Control Center</div>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="#dashboard" data-section="dashboard" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+      <li><a href="#about" data-section="about"><i class="fas fa-user-tie"></i> <span>About Me</span></a></li>
+      <li><a href="#skills" data-section="skills"><i class="fas fa-code"></i> <span>Skills</span></a></li>
+      <li><a href="#projects" data-section="projects"><i class="fas fa-rocket"></i> <span>Projects</span></a></li>
+      <li><a href="#education" data-section="education"><i class="fas fa-graduation-cap"></i> <span>Education</span></a></li>
+      <li><a href="#resume" data-section="resume"><i class="fas fa-file-pdf"></i> <span>Resume</span></a></li>
+      <li><a href="#certs" data-section="certs"><i class="fas fa-certificate"></i> <span>Certificates</span></a></li>
+      <li><a href="#achievements" data-section="achievements"><i class="fas fa-trophy"></i> <span>Achievements</span></a></li>
+      <li><a href="#contact" data-section="contact"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <a href="index.html" target="_blank" class="footer-action-link" title="Open Portfolio in new tab">
+        <i class="fas fa-external-link-alt"></i> <span>View Portfolio</span>
+      </a>
+      <button id="logout-btn" class="footer-action-link logout-btn" title="Logout">
+        <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN CONTENT AREA ────────────────────────── -->
+  <main class="admin-main">
+
+    <!-- Top Bar -->
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <button id="mobile-menu-toggle" class="mobile-menu-btn" title="Toggle Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h2 id="topbar-title">Dashboard</h2>
+      </div>
+      <div class="topbar-right">
+        <span id="cloud-sync-badge" class="cloud-pill synced" title="Shared Cloud Store (jsonbin.io)">
+          <i class="fas fa-cloud-check"></i>
+          <span id="cloud-sync-text">Cloud Synced</span>
+        </span>
+        <button id="cloud-sync-btn" class="btn btn-sm btn-outline-sync" title="Sync with Cloud Store">
+          <i class="fas fa-arrows-rotate"></i> <span>Sync</span>
+        </button>
+        <span class="user-pill">
+          <i class="fas fa-circle online-dot"></i>
+          <span class="user-email-text">poovarasanvj860@gmail.com</span>
+        </span>
+        <a href="index.html" target="_blank" class="btn btn-sm btn-primary view-site-btn">
+          <i class="fas fa-globe"></i> <span>Live Site</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Scrollbar (Always accessible on mobile / small screens) -->
+    <nav class="mobile-nav-bar" id="mobile-nav-bar">
+      <a href="#dashboard" data-section="dashboard" class="mobile-nav-item active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      <a href="#about" data-section="about" class="mobile-nav-item"><i class="fas fa-user-tie"></i> About</a>
+      <a href="#skills" data-section="skills" class="mobile-nav-item"><i class="fas fa-code"></i> Skills</a>
+      <a href="#projects" data-section="projects" class="mobile-nav-item"><i class="fas fa-rocket"></i> Projects</a>
+      <a href="#education" data-section="education" class="mobile-nav-item"><i class="fas fa-graduation-cap"></i> Edu</a>
+      <a href="#resume" data-section="resume" class="mobile-nav-item"><i class="fas fa-file-pdf"></i> Resume</a>
+      <a href="#certs" data-section="certs" class="mobile-nav-item"><i class="fas fa-certificate"></i> Certs</a>
+      <a href="#achievements" data-section="achievements" class="mobile-nav-item"><i class="fas fa-trophy"></i> Awards</a>
+      <a href="#contact" data-section="contact" class="mobile-nav-item"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: DASHBOARD
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-dashboard" class="admin-section active">
+      <div class="dash-welcome-card">
+        <div class="dash-welcome-text">
+          <h3>Welcome, Poovarasan VJ! 👋</h3>
+          <p>
+            You can fully <strong>Add, Edit, and Remove</strong> content for every section of your portfolio.
+            All updates save instantly to your browser and reflect on your live website.
+          </p>
+        </div>
+        <div class="dash-welcome-actions">
+          <a href="index.html" target="_blank" class="btn btn-primary">
+            <i class="fas fa-eye"></i> View Live Portfolio
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats Grid (Clickable to jump directly to section!) -->
+      <div class="dash-stats">
+        <div class="dash-stat" data-jump="skills" title="Click to manage Skills">
+          <div class="stat-icon"><i class="fas fa-code"></i></div>
+          <div class="stat-info">
+            <div class="num" id="stat-skills">0</div>
+            <div class="label">Skills</div>
+          </div>
+          <span class="jump-arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+
+        <div class="dash-stat" data-jump="projects" title="Click to manage Projects">
+          <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+          <div class="stat-info">
+            <div class="num" id="stat-projects">0</div>
+            <div class="label">Projects</div>
+          </div>
+          <span class="jump-arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+
+        <div class="dash-stat" data-jump="certs" title="Click to manage Certificates">
+          <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+          <div class="stat-info">
+            <div class="num" id="stat-certs">0</div>
+            <div class="label">Certificates</div>
+          </div>
+          <span class="jump-arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+
+        <div class="dash-stat" data-jump="achievements" title="Click to manage Achievements">
+          <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+          <div class="stat-info">
+            <div class="num" id="stat-achieve">0</div>
+            <div class="label">Achievements</div>
+          </div>
+          <span class="jump-arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+
+        <div class="dash-stat" data-jump="education" title="Click to manage Education">
+          <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="stat-info">
+            <div class="num" id="stat-education">0</div>
+            <div class="label">Education</div>
+          </div>
+          <span class="jump-arrow"><i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="admin-card">
+        <h4 class="card-section-title"><i class="fas fa-bolt" style="color:var(--cyan)"></i> Quick Actions — Add Content Directly</h4>
+        <div class="quick-actions-grid">
+          <button class="btn btn-action" onclick="window.navToSection('about')">
+            <i class="fas fa-user-edit"></i> Edit About Me
+          </button>
+          <button class="btn btn-action" onclick="window.openSkillModal()">
+            <i class="fas fa-plus-circle"></i> Add New Skill
+          </button>
+          <button class="btn btn-action" onclick="window.openProjectModal()">
+            <i class="fas fa-plus-circle"></i> Add New Project
+          </button>
+          <button class="btn btn-action" onclick="window.openCertModal()">
+            <i class="fas fa-plus-circle"></i> Add Certificate
+          </button>
+          <button class="btn btn-action" onclick="window.openEduModal()">
+            <i class="fas fa-plus-circle"></i> Add Education
+          </button>
+          <button class="btn btn-action" onclick="window.openAchModal()">
+            <i class="fas fa-plus-circle"></i> Add Achievement
+          </button>
+          <button class="btn btn-action" onclick="window.navToSection('resume')">
+            <i class="fas fa-file-pdf"></i> Update Resume
+          </button>
+          <button class="btn btn-action" onclick="window.navToSection('contact')">
+            <i class="fas fa-address-book"></i> Update Contact
+          </button>
+        </div>
+      </div>
+
+      <!-- ImgBB Help Guide Card -->
+      <div class="admin-card" style="border-left: 4px solid var(--purple)">
+        <h4 class="card-section-title"><i class="fas fa-image" style="color:var(--purple-light)"></i> How to Add Images via ImgBB.com</h4>
+        <ol style="color:var(--text-muted);font-size:0.86rem;line-height:1.9;padding-left:1.3rem">
+          <li>Visit <a href="https://imgbb.com" target="_blank" style="color:var(--cyan);font-weight:600;text-decoration:underline">imgbb.com</a> in your browser.</li>
+          <li>Click <strong>"Start uploading"</strong> and choose your profile photo or certificate screenshot.</li>
+          <li>After upload, copy the <strong>"Direct link"</strong> (URL ending with <code>.jpg</code> or <code>.png</code>).</li>
+          <li>Paste that URL into the Image URL field in About Me, Projects, or Certificates below.</li>
+        </ol>
+      </div>
+
+      <!-- Shared Cloud Store (jsonbin.io) Status Card -->
+      <div class="admin-card" style="border-left: 4px solid var(--emerald)">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:0.6rem">
+          <h4 class="card-section-title" style="margin-bottom:0"><i class="fas fa-cloud" style="color:var(--emerald)"></i> Shared Cloud Database (jsonbin.io)</h4>
+          <button class="btn btn-sm btn-primary" onclick="window.handleManualSync()" style="font-size:0.8rem">
+            <i class="fas fa-arrows-rotate"></i> Sync Cloud Store Now
+          </button>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.7">
+          Every time you save changes here, they are automatically synchronized with your shared cloud database (<strong style="color:var(--text-primary)">Bin: 6a8b10a8f5f4af5e2938ba0a</strong>) so that all visitors and recruiters see your real-time portfolio updates.
+        </p>
+      </div>
+
+      <!-- Reset / Backup -->
+      <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap">
+        <button id="reset-data-btn" class="btn btn-delete">
+          <i class="fas fa-rotate-left"></i> Reset All Data to Defaults
+        </button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: ABOUT ME
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-about" class="admin-section">
+      <div class="admin-section-header">
+        <div>
+          <h3><i class="fas fa-user-tie" style="color:var(--purple-light)"></i> About Me Management</h3>
+          <p class="section-desc">Edit your personal information, academic status, interests, and profile photo.</p>
+        </div>
+        <button id="about-save-btn" class="btn btn-primary"><i class="fas fa-save"></i> Save About Me</button>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-name"><i class="fas fa-signature"></i> Full Name *</label>
+              <input id="a-name" placeholder="Poovarasan VJ">
+            </div>
+            <div class="form-group">
+              <label for="a-title"><i class="fas fa-briefcase"></i> Professional Title / Role</label>
+              <input id="a-title" placeholder="AI & ML Developer | Python & Web Developer">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-college"><i class="fas fa-university"></i> College / Institution</label>
+              <input id="a-college" placeholder="Sree Sakthi Engineering College">
+            </div>
+            <div class="form-group">
+              <label for="a-department"><i class="fas fa-microchip"></i> Department</label>
+              <input id="a-department" placeholder="Artificial Intelligence & Machine Learning (AI & ML)">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-educationStatus"><i class="fas fa-user-graduate"></i> Academic Year / Status</label>
+              <input id="a-educationStatus" placeholder="3rd Year Student">
+            </div>
+            <div class="form-group">
+              <label for="a-availability"><i class="fas fa-check-circle"></i> Availability Status</label>
+              <input id="a-availability" placeholder="Open to Internships & Collaborations">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="a-profileImage"><i class="fas fa-image"></i> Profile Image URL (from ImgBB.com)</label>
+            <input id="a-profileImage" placeholder="https://i.ibb.co/..." oninput="window.previewImage('a-profileImage', 'a-img-preview')">
+            <div class="img-preview-box">
+              <span class="preview-label">Live Preview:</span>
+              <img id="a-img-preview" src="" alt="Profile Preview" onerror="this.style.display='none'" onload="this.style.display='inline-block'">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="a-bio"><i class="fas fa-align-left"></i> About Me / Bio</label>
+            <textarea id="a-bio" style="min-height:100px" placeholder="Write a short summary about yourself..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="a-careerGoal"><i class="fas fa-bullseye"></i> Career Goal</label>
+            <textarea id="a-careerGoal" style="min-height:65px" placeholder="Build practical AI/ML and web-development projects..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-areasOfInterest"><i class="fas fa-compass"></i> Areas of Interest</label>
+              <input id="a-areasOfInterest" placeholder="AI & Machine Learning, Web Development, UI/UX Design, Data Analysis">
+            </div>
+            <div class="form-group">
+              <label for="a-aimlInterest"><i class="fas fa-brain"></i> AI/ML Interest</label>
+              <input id="a-aimlInterest" placeholder="Machine Learning, Computer Vision, NLP, AI-based applications">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="a-tools"><i class="fas fa-toolbox"></i> Tools & Technologies</label>
+              <input id="a-tools" placeholder="VS Code, Git, GitHub, OpenCV">
+            </div>
+            <div class="form-group">
+              <label for="a-location"><i class="fas fa-map-marker-alt"></i> Location</label>
+              <input id="a-location" placeholder="Tamil Nadu, India">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="a-email"><i class="fas fa-envelope"></i> Contact Email</label>
+            <input id="a-email" type="email" placeholder="poovarasanvj860@gmail.com">
+          </div>
+
+          <div style="margin-top:1rem;display:flex;justify-content:flex-end">
+            <button id="about-save-btn-bottom" class="btn btn-primary"><i class="fas fa-save"></i> Save About Me Changes</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: SKILLS
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-skills" class="admin-section">
+      <div class="admin-section-header">
+        <div>
+          <h3><i class="fas fa-code" style="color:var(--purple-light)"></i> Skills Management (<span id="count-skills">0</span>)</h3>
+          <p class="section-desc">Add new technical skills, update proficiency levels, or remove outdated ones.</p>
+        </div>
+        <button id="add-skill-btn" class="btn btn-primary" onclick="window.openSkillModal()"><i class="fas fa-plus"></i> Add New Skill</button>
+      </div>
+
+      <div id="admin-skills-list"></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: PROJECTS
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-projects" class="admin-section">
+      <div class="admin-section-header">
+        <div>
+          <h3><i class="fas fa-rocket" style="color:var(--purple-light)"></i> Projects Management (<span id="count-projects">0</span>)</h3>
+          <p class="section-desc">Add projects, update descriptions, tags, demo/GitHub links, and ImgBB screenshots.</p>
+        </div>
+        <button id="add-project-btn" class="btn btn-primary" onclick="window.openProjectModal()"><i class="fas fa-plus"></i> Add New Project</button>
+      </div>
+
+      <div id="admin-projects-list"></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: EDUCATION
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-education" class="admin-section">
+      <div class="admin-section-header">
+        <div>
+          <h3><i class="fas fa-graduation-cap" style="color:var(--purple-light)"></i> Education Management (<span id="count-education">0</span>)</h3>
+          <p class="section-desc">Manage degrees, schools, colleges, grades, and academic timelines.</p>
+        </div>
+        <button id="add-edu-btn" class="btn btn-primary" onclick="window.openEduModal()"><i class="fas fa-plus"></i> Add Education</button>
+      </div>
+
+      <div id="admin-edu-list"></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: RESUME
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-resume" class="admin-section">
+      <div class="admin-section-header">
+        <div>
+          <h3><i class="fas fa-file-pdf" style="color:var(--purple-light)"></i> Resume Link Management</h3>
+          <p class="section-desc">Set your downloadable resume URL (Google Drive direct link, ImgBB, or PDF hosting).</p>
+        </div>
+        <button id="resume-save-btn" class="btn btn-primary"><i class="fas fa-save"></i> Save Resume Link</button>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-form">
+          <div class="form-group">
+            <label for="r-url"><i class="fas fa-link"></i> Resume PDF / Document URL</label>
+            <input id="r-url" placeholder="https://drive.google.com/... or https://your-domain.com/resume.pdf">
+            <small style="color:var(--text-muted);font-size:0.78rem;margin-top:5px;display:block">
+              💡 Tip: Upload your PDF to Google Drive, set sharing to "Anyone with the link can view", and paste the link here.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="r-label"><i class="fas fa-tag"></i> Button Text</label>
+            <input id="r-label" placeholder="Download Resume (PDF)">
+          </div>
+          <div style="display:flex;gap:0.8rem;align-items:center;margin-top:0.5rem">
+            <a id="r-test-link" href="#" target="_blank" class="btn btn-sm btn-edit" style="display:none">
+              <i class="fas fa-external-link-alt"></i> Test Resume Link
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: CERTIFICATES
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-certs" class="admin-section">
+      <div class="admin-section-header">
+        <div>
+          <h3><i class="fas fa-certificate" style="color:var(--purple-light)"></i> Certificates Management (<span id="count-certs">0</span>)</h3>
+          <p class="section-desc">Add verified certifications with title, issuer, year, and ImgBB certificate image.</p>
+        </div>
+        <button id="add-cert-btn" class="btn btn-primary" onclick="window.openCertModal()"><i class="fas fa-plus"></i> Add Certificate</button>
+      </div>
+
+      <div id="admin-certs-list"></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: ACHIEVEMENTS
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-achievements" class="admin-section">
+      <div class="admin-section-header">
+        <div>
+          <h3><i class="fas fa-trophy" style="color:var(--purple-light)"></i> Achievements Management (<span id="count-achieve">0</span>)</h3>
+          <p class="section-desc">Showcase hackathons, awards, recognitions, and extracurricular honors.</p>
+        </div>
+        <button id="add-ach-btn" class="btn btn-primary" onclick="window.openAchModal()"><i class="fas fa-plus"></i> Add Achievement</button>
+      </div>
+
+      <div id="admin-achievements-list"></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         SECTION: CONTACT
+    ════════════════════════════════════════════════════ -->
+    <section id="sec-contact" class="admin-section">
+      <div class="admin-section-header">
+        <div>
+          <h3><i class="fas fa-envelope" style="color:var(--purple-light)"></i> Contact &amp; Social Links</h3>
+          <p class="section-desc">Manage your email, phone, location, and social profile links shown across the portfolio.</p>
+        </div>
+        <button id="contact-save-btn" class="btn btn-primary"><i class="fas fa-save"></i> Save Contact Info</button>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-email"><i class="fas fa-envelope"></i> Primary Email</label>
+              <input id="c-email" type="email" placeholder="poovarasanvj860@gmail.com">
+            </div>
+            <div class="form-group">
+              <label for="c-phone"><i class="fas fa-phone"></i> Phone Number</label>
+              <input id="c-phone" placeholder="+91 70109999860">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-linkedin"><i class="fab fa-linkedin"></i> LinkedIn URL</label>
+              <input id="c-linkedin" placeholder="https://linkedin.com/in/poovarasan-p-2b506a377/">
+            </div>
+            <div class="form-group">
+              <label for="c-github"><i class="fab fa-github"></i> GitHub URL</label>
+              <input id="c-github" placeholder="https://github.com/Poovarasan701">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="c-instagram"><i class="fab fa-instagram"></i> Instagram URL</label>
+              <input id="c-instagram" placeholder="https://instagram.com/...">
+            </div>
+            <div class="form-group">
+              <label for="c-twitter"><i class="fab fa-twitter"></i> Twitter / X URL</label>
+              <input id="c-twitter" placeholder="https://twitter.com/...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-location"><i class="fas fa-map-marker-alt"></i> Location</label>
+            <input id="c-location" placeholder="Tamil Nadu, India">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div><!-- /#admin-panel -->
+
+<!-- ════════════════════════════════════════════════════
+     GENERIC REUSABLE MODAL (Add / Edit)
+════════════════════════════════════════════════════ -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h3 id="modal-title"><i class="fas fa-edit"></i> Edit Item</h3>
+      <button class="modal-close" id="modal-close" title="Close"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn btn-delete" id="modal-cancel"><i class="fas fa-times"></i> Cancel</button>
+      <button class="btn btn-primary" id="modal-save"><i class="fas fa-check"></i> Save Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     CONFIRM DIALOG (Delete)
+════════════════════════════════════════════════════ -->
+<div class="modal-backdrop" id="confirm-backdrop">
+  <div class="modal confirm-modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h3><i class="fas fa-triangle-exclamation" style="color:#ef4444"></i> Confirm Deletion</h3>
+    </div>
+    <p id="confirm-msg">Are you sure you want to delete this item?</p>
+    <div class="modal-actions">
+      <button class="btn btn-edit" id="confirm-no"><i class="fas fa-times"></i> Cancel</button>
+      <button class="btn btn-delete" id="confirm-yes"><i class="fas fa-trash"></i> Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification element -->
+<div id="admin-toast" class="toast"></div>
+
+<!-- ════════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════════ -->
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>
